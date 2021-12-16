@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 //	build application
         StudentUI studentUI = new StudentUI();
-        UserController userController = new UserController(studentUI);
+        UserModel userModel = new UserModel();
+        UserController userController = new UserController(studentUI, userModel);
     }
 }
