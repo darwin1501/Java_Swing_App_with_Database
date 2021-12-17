@@ -14,7 +14,7 @@ public class UserModel {
             ResultSet users = statement.executeQuery("SELECT * from user_list");
 
             while (users.next()){
-                System.out.println(users.getString(1)+"  "+users.getString(2)+"  "+users.getInt(3));
+                System.out.println(users.getInt(1)+"  "+users.getString(2)+"  "+users.getString(3));
             }
             userData.getConnection().close();
         }catch (Exception e){
@@ -27,9 +27,7 @@ public class UserModel {
         UserFromMSSQL userData = new UserFromMSSQL();
         try{
             Statement statement = userData.getConnection().createStatement();
-//            st.executeUpdate("INSERT INTO Customers " +
-//                    "VALUES (1001, 'Simpson', 'Mr.', 'Springfield', 2001)");
-//            statement.executeUpdate(String.format("INSERT INTO user_list "+"VALUES (%s, %s)",username, email));
+
             statement.executeUpdate("INSERT INTO user_list (username, email) VALUES ('"+username+"','"+email+"')");
         }catch (Exception e){
             System.out.println(e);
