@@ -3,16 +3,19 @@ package com.darwin.model;
 import com.darwin.database.UserFromMSSQL;
 import com.darwin.table_builder.TableBuilder;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 public class UserModel {
 
-    public static void getAllUser(){
+    public ArrayList getAllUser(){
         UserFromMSSQL userData = new UserFromMSSQL();
         ArrayList<ArrayList<Object>> row = new ArrayList<>();
         ArrayList<Object> column = new ArrayList<>();
+        ArrayList<Object> tableData = new ArrayList<>();
+
         int columnCount;
 
         try{
@@ -52,8 +55,13 @@ public class UserModel {
 //        convert array list to array
         Object[] columnArray = column.toArray();
 
-        TableBuilder tableBuilder = new TableBuilder();
-        tableBuilder.buildTable(rowArray ,columnArray );
+        tableData.add(rowArray);
+        tableData.add(columnArray);
+
+        return tableData;
+
+//        TableBuilder tableBuilder = new TableBuilder();
+//        tableBuilder.buildTable(rowArray ,columnArray );
     }
 
     public void addUser(String username, String email){
@@ -63,6 +71,7 @@ public class UserModel {
             Statement statement = userData.getConnection().createStatement();
 
             statement.executeUpdate("INSERT INTO user_list (username, email) VALUES ('"+username+"','"+email+"')");
+
         }catch (Exception e){
             System.out.println(e);
         }

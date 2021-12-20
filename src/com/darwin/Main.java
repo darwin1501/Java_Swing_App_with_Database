@@ -12,6 +12,6 @@ public class Main {
         StudentUI studentUI = new StudentUI();
         UserModel userModel = new UserModel();
         UserController userController = new UserController(studentUI, userModel);
-        UserModel.getAllUser();
+
     }
 }
