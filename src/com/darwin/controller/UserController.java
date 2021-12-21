@@ -29,19 +29,23 @@ public class UserController {
             String username;
             String email;
 
-
             username = studentUI.getUsernameTextbox().getText();
             email = studentUI.getEmailTextbox().getText();
 
             userModel.addUser(username, email);
 //            update view
 //            UserModel.getAllUser();
-            Object[][] rowArray = (Object[][]) userModel.getAllUser().get(0);
-            Object[] columnArray = (Object[]) userModel.getAllUser().get(1);
 
-            studentUI.getFrame().remove(table.getTable());
-            table.buildTable(studentUI.getFrame(), rowArray, columnArray);
+            updateTable();
         });
+    }
 
+    public void updateTable(){
+
+        Object[][] rowArray = (Object[][]) userModel.getAllUser().get(0);
+        Object[] columnArray = (Object[]) userModel.getAllUser().get(1);
+
+        studentUI.getFrame().remove(table.getScrollPane());
+        table.buildTable(studentUI.getFrame(), rowArray, columnArray);
     }
 }

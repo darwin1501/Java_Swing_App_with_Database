@@ -41,6 +41,8 @@ public class StudentUI {
         submitBtn = new JButton("Add User");
         submitBtn.setBounds(10,120,100,50);
         frame.add(submitBtn);
+
+//        frame.setVisible(true);
     }
 
     public JButton getSubmitBtn(){
