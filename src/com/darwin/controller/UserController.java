@@ -41,7 +41,6 @@ public class UserController {
 
             studentUI.getFrame().remove(table.getTable());
             table.buildTable(studentUI.getFrame(), rowArray, columnArray);
-
         });
 
     }
